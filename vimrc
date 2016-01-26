@@ -172,13 +172,32 @@ augroup END
 
 " ----- xolox/vim-easytags settings -----
 " Where to look for tags files
-set tags=./tags;,~/.vimtags
+" set tags=./tags;,~/.tags
+" set tags=./tags,tags;$HOME 
+"It tells Vim to look for a tags file in the directory of the current file, in the current directory and up and up until your $HOME (that's the meaning of the semicolon), stopping on the first hit."
+" set tags=.vimtags;,~/.vimtags
+" set tags=./.tags;,~/.vimtags
+set tags=./.vimtags;,~/.vimtags
+" by my test, the firstname of tags conf will decide the tag file name, not
+" the g:easytags_file decides
+set autochdir
+
 " Sensible defaults
+let g:easytags_cmd = '/usr/local/bin/ctags'
+let g:easytags_file = '~/.vimtags'
 let g:easytags_events = ['BufReadPost', 'BufWritePost']
 let g:easytags_async = 1
-let g:easytags_dynamic_files = 2
+" let g:easytags_dynamic_files = 2
+let g:easytags_dynamic_files = 1
 let g:easytags_resolve_links = 1
 let g:easytags_suppress_ctags_warning = 1
+let g:easytags_on_cursorhold = 0
+" let g:easytags_always_enabled = 1
+nmap <F2> :UpdateTags -R ~<CR>
+nmap <F3> :UpdateTags -R ./<CR>
+nmap <F4> :HighlightTag<CR>
+
+
 
 " ----- majutsushi/tagbar settings -----
 " Open/close tagbar with \b
@@ -211,11 +230,11 @@ let g:neocomplete#enable_at_startup = 1
 
 
 "---------- Tag list -------------
-"let Tlist_Show_One_File = 1
-let Tlist_File_Fold_Auto_Close = 1 
-let Tlist_Exit_OnlyWindow = 1 
-let Tlist_Ctags_Cmd = "/usr/local/bin/ctags"
-let Tlist_Use_Right_Window = 1 "let taglist show on right side"
+" let Tlist_Show_One_File = 1
+" let Tlist_File_Fold_Auto_Close = 0 
+" let Tlist_Exit_OnlyWindow = 1 
+" let Tlist_Ctags_Cmd = "/usr/local/bin/ctags"
+" let Tlist_Use_Right_Window = 1 "let taglist show on right side"
 
 
 "------------for vim-go------------
