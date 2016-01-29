@@ -5,7 +5,8 @@
 "
 
 " Gotta be first
-" set nocompatible
+set nocompatible
+
 
 " filetype off
 
@@ -82,6 +83,39 @@ Plug 'jez/vim-c0'
 Plug 'jez/vim-ispc'
 Plug 'kchmck/vim-coffee-script'
 
+" ----- HTML CSS JS --------------------------------------------------
+Plug 'mattn/emmet-vim'
+Plug 'gregsexton/MatchTag'
+
+" ----- Formatter ----------------------------------------------------
+" Plug 'Chiel92/vim-autoformat'
+" let g:formatterpath = ['', '/home/superman/formatters']
+" noremap <F12> :Autoformat<CR>
+" disable the fallback to vim indent file
+" let g:autoformat_autoindent = 0
+
+Plug 'maksimr/vim-jsbeautify'
+Plug 'einars/js-beautify'
+
+autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
+" for json 
+autocmd FileType json noremap <buffer> <c-f> :call JsonBeautify()<cr>
+" for jsx 
+autocmd FileType jsx noremap <buffer> <c-f> :call JsxBeautify()<cr>
+" for html
+autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
+" for css or scss
+autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
+
+autocmd FileType javascript vnoremap <buffer>  <c-f> :call RangeJsBeautify()<cr>
+autocmd FileType json vnoremap <buffer> <c-f> :call RangeJsonBeautify()<cr>
+autocmd FileType jsx vnoremap <buffer> <c-f> :call RangeJsxBeautify()<cr>
+autocmd FileType html vnoremap <buffer> <c-f> :call RangeHtmlBeautify()<cr>
+autocmd FileType css vnoremap <buffer> <c-f> :call RangeCSSBeautify()<cr>
+
+
+
+
 " ----- Ohters --------------------------------------------------------
 Plug 'Shougo/neocomplete'
 Plug 'Shougo/neosnippet'
@@ -108,6 +142,11 @@ Plug 'Shougo/neosnippet-snippets'
 " Add plugins to &runtimepath
 call plug#end()
 
+" save file
+" noremap <silent> <C-S> :update<CR>
+" vnoremap <silent> <C-S> <C-C> :update<CR>
+" inoremap <silent> <C-S> <C-O> :update<CR>
+noremap <c-w> :w<cr>
 
 
 " --- General settings ---
@@ -121,6 +160,11 @@ set hlsearch
 syntax on
 
 set mouse=a
+
+
+filetype indent on
+set smartindent
+
 
 " ----- Plugin-Specific Settings --------------------------------------
 
@@ -168,8 +212,8 @@ let g:nerdtree_tabs_open_on_console_startup = 1
 let g:syntastic_error_symbol = '✘'
 let g:syntastic_warning_symbol = "▲"
 augroup mySyntastic
-  au!
-  au FileType tex let b:syntastic_mode = "passive"
+	au!
+	au FileType tex let b:syntastic_mode = "passive"
 augroup END
 
 
@@ -205,7 +249,7 @@ nmap <F4> :HighlightTag<CR>
 " ----- majutsushi/tagbar settings -----
 " Open/close tagbar with \b
 " nmap <silent> <leader>l :TagbarToggle<CR>
-nmap <F9> :TagbarToggle<CR>
+nmap <F10> :TagbarToggle<CR>
 " Uncomment to open tagbar automatically whenever possible
 "autocmd BufEnter * nested :call tagbar#autoopen(0)
 
@@ -220,11 +264,11 @@ let g:airline#extensions#hunks#non_zero_only = 1
 " ----- Raimondi/delimitMate settings -----
 let delimitMate_expand_cr = 1
 augroup mydelimitMate
-  au!
-  au FileType markdown let b:delimitMate_nesting_quotes = ["`"]
-  au FileType tex let b:delimitMate_quotes = ""
-  au FileType tex let b:delimitMate_matchpairs = "(:),[:],{:},`:'"
-  au FileType python let b:delimitMate_nesting_quotes = ['"', "'"]
+	au!
+	au FileType markdown let b:delimitMate_nesting_quotes = ["`"]
+	au FileType tex let b:delimitMate_quotes = ""
+	au FileType tex let b:delimitMate_matchpairs = "(:),[:],{:},`:'"
+	au FileType python let b:delimitMate_nesting_quotes = ['"', "'"]
 augroup END
 
 
@@ -330,14 +374,14 @@ let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 
 " Define dictionary.
 let g:neocomplete#sources#dictionary#dictionaries = {
-    \ 'default' : '',
-    \ 'vimshell' : $HOME.'/.vimshell_hist',
-    \ 'scheme' : $HOME.'/.gosh_completions'
-        \ }
+			\ 'default' : '',
+			\ 'vimshell' : $HOME.'/.vimshell_hist',
+			\ 'scheme' : $HOME.'/.gosh_completions'
+			\ }
 
 " Define keyword.
 if !exists('g:neocomplete#keyword_patterns')
-    let g:neocomplete#keyword_patterns = {}
+	let g:neocomplete#keyword_patterns = {}
 endif
 let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
@@ -349,9 +393,9 @@ inoremap <expr><C-l>     neocomplete#complete_common_string()
 " <CR>: close popup and save indent.
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function()
-  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
-  " For no inserting <CR> key.
-  "return pumvisible() ? "\<C-y>" : "\<CR>"
+	return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+	" For no inserting <CR> key.
+	"return pumvisible() ? "\<C-y>" : "\<CR>"
 endfunction
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -379,7 +423,7 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " Enable heavy omni completion.
 if !exists('g:neocomplete#sources#omni#input_patterns')
-  let g:neocomplete#sources#omni#input_patterns = {}
+	let g:neocomplete#sources#omni#input_patterns = {}
 endif
 "let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 "let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
