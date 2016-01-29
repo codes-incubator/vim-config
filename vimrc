@@ -165,6 +165,8 @@ set mouse=a
 filetype indent on
 set smartindent
 
+set foldmethod=indent
+
 
 " ----- Plugin-Specific Settings --------------------------------------
 
