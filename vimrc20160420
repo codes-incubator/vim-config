@@ -48,6 +48,9 @@ Plug 'nsf/gocode'
 Plug 'bling/vim-airline'
 Plug 'christoomey/vim-tmux-navigator'
 
+Plug 'chase/vim-ansible-yaml'
+
+
 
 " ----- Working with Git ----------------------------------------------
 Plug 'airblade/vim-gitgutter'
