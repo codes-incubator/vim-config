@@ -75,6 +75,10 @@ filetype indent on
 set smartindent
 set foldmethod=indent
 
+"  show the gird
+set cursorline
+set cursorcolumn
+
 
 
 " save file
