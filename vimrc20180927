@@ -1,0 +1,160 @@
+" File: .vimrc
+" " Author: Johnny P Jing <johnny@jpixy.com>
+" "
+" " How I configure Vim :P
+" "
+"
+
+call plug#begin('~/.vim/plugged')
+
+" Make sure you use single quotes
+
+" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
+" Plug 'junegunn/vim-easy-align'
+
+" Any valid git URL is allowed
+" Plug 'https://github.com/junegunn/vim-github-dashboard.git'
+
+" Group dependencies, vim-snippets depends on ultisnips
+" Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+
+" On-demand loading
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'jistr/vim-nerdtree-tabs'
+Plug 'scrooloose/syntastic'
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-easytags'
+Plug 'majutsushi/tagbar'
+Plug 'kien/ctrlp.vim'
+
+" Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+
+" Using a non-master branch
+" Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+
+" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
+" Plug 'fatih/vim-go', { 'tag': '*' }
+Plug 'fatih/vim-go'
+
+" Plugin options
+Plug 'nsf/gocode'
+
+" Plugin outside ~/.vim/plugged with post-update hook
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+
+" Unmanaged plugin (manually installed and updated)
+" Plug '~/my-prototype-plugin'
+
+Plug 'bling/vim-airline'
+Plug 'christoomey/vim-tmux-navigator'
+
+Plug 'chase/vim-ansible-yaml'
+
+Plug 'python-mode/python-mode', { 'branch': 'develop' }
+
+
+" ----- Working with Git ----------------------------------------------
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+
+
+" Add plugins to &runtimepath
+call plug#end()
+
+
+" --- General settings ---
+set backspace=indent,eol,start
+set ruler
+set number
+"  set showcmd
+"  set incsearch
+"  set hlsearch
+syntax on
+"  set mouse=a
+filetype indent on
+set smartindent
+set foldmethod=indent
+
+"  show the gird
+set cursorline
+set cursorcolumn
+
+" disable the automatic comments new line
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+" save file
+" noremap <silent> <C-S> :update<CR>
+" vnoremap <silent> <C-S> <C-C> :update<CR>
+" inoremap <silent> <C-S> <C-O> :update<CR>
+noremap <c-a> :w<cr>
+
+
+
+
+" ----- jistr/vim-nerdtree-tabs -----
+autocmd vimenter * NERDTree
+
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+map <C-n> :NERDTreeToggle<CR>
+
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
+
+" 在 vim 启动的时候默认开启 NERDTree（autocmd 可以缩写为 au）                                                                                                               
+autocmd VimEnter * NERDTree
+                                                                                                                                                
+" 按下 F2 调出/隐藏 NERDTree                                                                                                                                                
+map  :silent! NERDTreeToggle
+                                                                                                                                              
+" 将 NERDTree 的窗口设置在 vim 窗口的右侧（默认为左侧）                                                                                                                     
+" let NERDTreeWinPos="right"                                                                                                                                                
+let NERDTreeWinPos="left"
+                                                                                                                                              
+" let the course on the right editor zone by default                                                                                                                        
+" Jump to the main window                                                                                                                                                   
+autocmd VimEnter * wincmd p
+                                                                                                                                         
+" Close Nerdtree if no files specified                                                                                                                                      
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+                                                                     
+let NERDTreeHighlightCursorline=1
+                                                                                                                                          
+" 当打开 NERDTree 窗口时，自动显示 Bookmarks                                                                                                                                
+let NERDTreeShowBookmarks=1   
+
+
+
+
+" ------------ VIM GO -------------
+au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <leader>b <Plug>(go-build)
+au FileType go nmap <leader>t <Plug>(go-test)
+au FileType go nmap <leader>c <Plug>(go-coverage)
+
+au FileType go nmap <Leader>ds <Plug>(go-def-split)
+au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+
+au FileType go nmap <Leader>gd <Plug>(go-doc)
+au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
+
+au FileType go nmap <Leader>gb <Plug>(go-doc-browser)
+
+au FileType go nmap <Leader>s <Plug>(go-implements)
+
+au FileType go nmap <Leader>i <Plug>(go-info)
+
+au FileType go nmap <Leader>e <Plug>(go-rename)
+
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_interfaces = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+
+let g:go_fmt_command = "goimports"
