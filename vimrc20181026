@@ -58,8 +58,10 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 
 
-" ----- Working with Git ----------------------------------------------
-Plug 'gabrielelana/vim-markdown'
+" ----- Working with Markdown ----------------------------------------------
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+
 
 " Add plugins to &runtimepath
 call plug#end()
