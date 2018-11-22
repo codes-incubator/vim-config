@@ -105,7 +105,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ll='ls -alF'
 alias ll='ls -alFh'
 alias la='ls -A'
-alias l='ls -CF'
+alias l='ls -l'
 
 export GOROOT=/usr/local/go
 #export GOPATH=/home/johnny/Develop/Go/goworkspace/lib:/home/johnny/Develop/Go/goworkspace/work
