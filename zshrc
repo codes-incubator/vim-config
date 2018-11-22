@@ -131,8 +131,5 @@ export ANDROID_HOME=/home/johnny/Develop/Android/android-sdk-linux
 export PATH=$GOROOT/bin:$GOPATH/bin:$NODE_PATH/bin:$JAVA_HOME/bin:$MAVEN_HOME/bin:$GRADLE_HOME/bin:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$PATH
 
 
-alias ll='ls -alh'
-
-
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
