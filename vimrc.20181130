@@ -49,7 +49,7 @@ Plug 'chase/vim-ansible-yaml'
 " ----- Programming Plug  ----------------------------------------------
 Plug 'scrooloose/syntastic'
 Plug 'kien/ctrlp.vim'
-Plug 'valloric/youcompleteme'
+" Plug 'valloric/youcompleteme'
 Plug 'ervandew/supertab'
 Plug 'w0rp/ale'
 Plug 'easymotion/vim-easymotion'
@@ -180,9 +180,9 @@ let g:go_fmt_command = "goimports"
 " ------ Plug Themes Options ---------------------------
 syntax enable
 " set background=light
-set background=dark
-colorscheme solarized
-let g:airline_theme='simple'
+" set background=dark
+" colorscheme solarized
+" let g:airline_theme='simple'
 
 
 
