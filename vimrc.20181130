@@ -204,6 +204,10 @@ syntax on
 "  set mouse=a
 filetype indent on
 set smartindent
+" set smartindent
+set nosmartindent
+set noautoindent
+
 set foldmethod=indent
 
 "  show the gird
