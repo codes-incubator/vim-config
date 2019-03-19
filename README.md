@@ -1,2 +1,15 @@
-# Vim
-store for vimrc etc
+# Vim-settings
+
+This repo is for helping you to build vim cooler.
+
+## How to use it
+
+1. copy the .vimrc file to your ~/.vimrc
+2. :PlugInstall
+3. Enjoy it !
+
+## Q&A
+
+1. What's the compnent it contains
+Nerd-tree, Vim-Plug, Vim-go etc.
+
