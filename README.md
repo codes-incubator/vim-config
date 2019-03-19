@@ -11,7 +11,7 @@ This repo is for helping you to build vim cooler.
 ## Q&A
 
 1. What's the compnent it contains
-Nerd-tree, Vim-Plug, Vim-go etc.
+> Nerd-tree, Vim-Plug, Vim-go etc.
 
 2. How can I upgrade the plugs
-just run :PlugUpdate
+> just run :PlugUpdate
