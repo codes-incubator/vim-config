@@ -204,6 +204,10 @@ syntax on
 "  set mouse=a
 filetype indent on
 set smartindent
+set tabstop=4  
+set shiftwidth=4  
+set expandtab  
+set softtabstop=4
 " set smartindent
 set nosmartindent
 set noautoindent
