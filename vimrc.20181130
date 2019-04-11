@@ -207,6 +207,9 @@ set smartindent
 " set smartindent
 set nosmartindent
 set noautoindent
+set paste
+" set nopaste
+" set pastetoggle=<F3>
 
 set foldmethod=indent
 
