@@ -211,7 +211,7 @@ set softtabstop=4
 " set smartindent
 set nosmartindent
 set noautoindent
-set paste
+" :set paste
 " set nopaste
 " set pastetoggle=<F3>
 
