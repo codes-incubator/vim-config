@@ -195,6 +195,7 @@ syntax enable
 
 
 " --- General settings ---
+set clipboard=unnamedplus
 set backspace=indent,eol,start
 set ruler
 set number
