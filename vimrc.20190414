@@ -195,6 +195,8 @@ syntax enable
 
 
 " --- General settings ---
+" colorscheme solarized
+colorscheme default
 set clipboard=unnamedplus
 set backspace=indent,eol,start
 set ruler
