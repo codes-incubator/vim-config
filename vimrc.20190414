@@ -211,8 +211,16 @@ set shiftwidth=4
 set expandtab  
 set softtabstop=4
 " set smartindent
+
+" 关闭自动注释
+set fo-=r 
+" 关闭自动缩进（这个对C/C++代码好像无效）
+set noautoindent
+" 关闭C语言缩进 
+set nocindent
 set nosmartindent
 set noautoindent
+
 " set paste
 " set nopaste
 " set pastetoggle=<F3>
