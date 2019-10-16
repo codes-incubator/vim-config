@@ -17,5 +17,5 @@ This repo is for helping you to build vim cooler.
 > just run :PlugUpdate
 
 3. Disable the auto comments
-:set fo-=r 
-:set noautoindent 
+> :set fo-=r 
+> :set noautoindent 
