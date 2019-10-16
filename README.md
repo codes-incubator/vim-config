@@ -15,3 +15,7 @@ This repo is for helping you to build vim cooler.
 
 2. How can I upgrade the plugs
 > just run :PlugUpdate
+
+3. Disable the auto comments
+:set fo-=r 
+:set noautoindent 
