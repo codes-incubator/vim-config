@@ -38,6 +38,27 @@ set foldmethod=indent
 set cursorline
 set cursorcolumn
 
+" FZF: If installed using git
+set rtp+=~/.fzf
+
+" 0: status line show disable; 2: last 2 line show
+set laststatus=1
+" 标题栏设置:文件名、标记、程序名、操作系统
+" set titlestring=%f%h%m%r%w - %{v:progname}  %{$OS}
+
+" 状态栏设置:文件路径、文件名、标记、文件类型、字符编码、文件格式、当前位置、当前相对位置、文件总行数、日期、星期
+" set statusline=%F %h%1*%m%r%w%0*[%{strlen(&filetype)?&filetype:'none'},%{&encoding},%{&fileformat}]%=%-14.(%l,%c%V%) %<%p%%   [%L]   %{strftime('%y-%m-%d %A')}
+" set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
+
+let g:lightline = {
+      \ 'colorscheme': 'powerlineish',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'readonly', 'filename', 'modified', 'absolutepath' ] ]
+      \     }
+      \ }
+set noshowmode
+
 " disable the automatic comments new line
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
